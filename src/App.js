@@ -26,12 +26,23 @@ function App() {
     }
     ])
 
-  return (
-    <div className='container'>
-      <Header />
-      <Tasks tasks={tasks} />
-    </div>
-  )
+    // Delete task
+    const deleteTask = (id) => {
+      // console.log('delete', id)
+      setTasks(tasks.filter((task) => task.id !== id )) // setting the Task to the filtered task. for each task, if task.id doesn't equal to the (id)
+      // so in other words, whenever delete is clicked, the State shows all id NOT clicked by the delete (to check)
+    }
+
+    return (
+      <div className='container'>
+        <Header />
+        {tasks.length > 0 
+        ? 
+        <Tasks tasks={tasks} onDelete={deleteTask} /> 
+        : 
+        'No tasks remaining' }
+      </div>
+    )
 }
 
 export default App;
