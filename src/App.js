@@ -6,6 +6,9 @@ import AddTask from './components/AddTask'
 
 
 function App() {
+    // for toggling input boxes when clicking Add button
+    const [showAddTask, setShowAddTask] = useState(false) // boolean, false by default
+
     const [tasks, setTasks] = useState([
     {
         id: 1,
@@ -51,14 +54,17 @@ function App() {
 
     return (
       <div className='container'>
-        <Header />
-        <AddTask onAdd={addTask} />
-        {tasks.length > 0 
-        ? 
-        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}
-        /> 
-        : 
-        'No tasks remaining' }
+        <Header 
+          onAdd={() => setShowAddTask(!showAddTask)} 
+          showAdd={showAddTask} 
+          />
+          {showAddTask && <AddTask onAdd={addTask} />} {/* if showAddTask is true, then <AddTask ... */}
+          {tasks.length > 0 ? (
+            <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}
+            /> 
+          ) : (
+            'No tasks remaining' 
+          )}
       </div>
     )
 }
