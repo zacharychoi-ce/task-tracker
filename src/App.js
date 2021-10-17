@@ -33,12 +33,18 @@ function App() {
       // so in other words, whenever delete is clicked, the State shows all id NOT clicked by the delete (to check)
     }
 
+    // Toggle Reminder
+    const toggleReminder = (id) => {
+      setTasks(tasks.map((task) => task.id === id ?  {...task, reminder: !task.reminder} : task))  // spread task, but change reminder to opposite of current task.reminder (false, true etc)
+    }
+
     return (
       <div className='container'>
         <Header />
         {tasks.length > 0 
         ? 
-        <Tasks tasks={tasks} onDelete={deleteTask} /> 
+        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}
+        /> 
         : 
         'No tasks remaining' }
       </div>
