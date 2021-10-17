@@ -23,6 +23,11 @@ npm install
 ```
 
 ```
+npm run server
+```
+
+On a new tab (react dev server)
+```
 npm start
 ```
 
