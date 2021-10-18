@@ -11,6 +11,12 @@
       "text": "Codewars practice",
       "day": "Monday 5pm",
       "reminder": false
+    },
+    {
+      "text": "test",
+      "day": "test",
+      "reminder": true,
+      "id": 4
     }
   ]
 }

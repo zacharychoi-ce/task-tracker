@@ -6,8 +6,8 @@ const Tasks = ({ tasks, onDelete, onToggle }) => {
 
     return (
         <>
-            {tasks.map((task, index) => ( // index and change key={index} for error, for unique "key" prop?
-                <Task key={index} task={task} onDelete={onDelete} onToggle={onToggle}/>
+            {tasks.map((task) => ( // ? (task, index) and change key={index} for error, for unique "key" prop? (removed) removed, as not needed
+                <Task key={task.id} task={task} onDelete={onDelete} onToggle={onToggle}/>
             ))}
         </>
     )
