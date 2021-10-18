@@ -1,13 +1,9 @@
 import PropTypes from 'prop-types'
 import Button from './Button'
-import { useLocation } from 'react-router-dom' // for look at route we're currently on, and for Add button to not show on /about
+import { useLocation } from 'react-router-dom' 
 
 const Header = ({ title, onAdd, showAdd }) => {
     const location = useLocation()
-
-    // const onClick = () => {
-    //     console.log('Clicked')
-    // }
 
     return (
         <header className='header'>
@@ -25,11 +21,5 @@ Header.defaultProps = {
 Header.propTypes = {
     title: PropTypes.string.isRequired
 }
-
-// CSS in JS, styling to use if needed in this file
-// const headingStyle = {
-//     color: 'white', 
-//     backgroundColor: 'black'
-// }
 
 export default Header

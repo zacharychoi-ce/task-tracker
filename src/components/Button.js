@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 
-// i could just use props, but destructured into color, text
 const Button = ({ color, text, onClick}) => {
     return (
     <button onClick={onClick} style={{ backgroundColor: color }}
