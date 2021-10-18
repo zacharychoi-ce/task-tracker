@@ -9,26 +9,7 @@ function App() {
     // for toggling input boxes when clicking Add button
     const [showAddTask, setShowAddTask] = useState(false) // boolean, false by default
 
-    const [tasks, setTasks] = useState([
-    {
-        id: 1,
-        text: 'Buy groceries',
-        day: 'Monday 2pm',
-        reminder: true,
-    },
-    {
-        id: 2,
-        text: 'Follow up with recruiter',
-        day: 'Monday 11am',
-        reminder: true,
-    },
-    {
-        id: 3,
-        text: 'Codewars practice',
-        day: 'Monday 5pm',
-        reminder: false,
-    }
-    ])
+    const [tasks, setTasks] = useState([])
 
     // Add task
     const addTask = (task) => {
