@@ -22,6 +22,8 @@ git clone https://github.com/zacharychoi-ce/react-todo-list.git
 npm install
 ```
 
+Set up in package.json: "server": "json-server --watch db.json --port 5000"
+So runs port 5000
 ```
 npm run server
 ```
