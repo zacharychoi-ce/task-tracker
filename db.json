@@ -4,13 +4,13 @@
       "id": 1,
       "text": "Buy groceries",
       "day": "Monday 2pm",
-      "reminder": false
+      "reminder": true
     },
     {
       "id": 3,
       "text": "Codewars practice",
       "day": "Monday 5pm",
-      "reminder": false
+      "reminder": true
     },
     {
       "text": "test",
