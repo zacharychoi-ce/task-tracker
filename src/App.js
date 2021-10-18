@@ -30,17 +30,34 @@ function App() {
       }
 
     // Add task
-    const addTask = (task) => {
-      // console.log(task)
-      const id = Math.floor(Math.random() * 10000) + 1
-      console.log('new id: ', id)
+    const addTask = async (task) => {
+      // // console.log(task)
+      // const id = Math.floor(Math.random() * 10000) + 1
+      // // console.log('new id: ', id)
+      // const newTask = { id, ...task } // newTask will have object with the id from above, and the task passed in here (from input boxes)
+      // setTasks([...tasks, newTask])
 
-      const newTask = { id, ...task } // newTask will have object with the id from above, and the task passed in here (from input boxes)
-      setTasks([...tasks, newTask])
+      // commented above for actual addTask to server.
+      const res = await fetch('http://localhost:5000/tasks', {
+        method: 'POST',
+        headers: {
+        'Content-type': 'application/json',
+        },
+        body: JSON.stringify(task)
+      })
+
+      const data = await res.json() // await here cos its a promise! don't forget
+
+      setTasks([...tasks, data])
     }
 
     // Delete task
-    const deleteTask = (id) => {
+    const deleteTask = async (id) => {
+      // actual delete request to server. Made this function into async. Simple as this..
+      await fetch(`http://localhost:5000/tasks/${id}`, {
+        method: 'DELETE'
+      })
+
       // console.log('delete', id)
       setTasks(tasks.filter((task) => task.id !== id )) // setting the Task to the filtered task. for each task, if task.id doesn't equal to the (id)
       // so in other words, whenever delete is clicked, the State shows all id NOT clicked by the delete (to check)

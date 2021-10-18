@@ -1,22 +1,16 @@
 {
   "tasks": [
-{
-        "id": 1,
-        "text": "Buy groceries",
-        "day": "Monday 2pm",
-        "reminder": true
+    {
+      "id": 1,
+      "text": "Buy groceries",
+      "day": "Monday 2pm",
+      "reminder": true
     },
     {
-        "id": 2,
-        "text": "Follow up with recruiter",
-        "day": "Monday 11am",
-        "reminder": true
-    },
-    {
-        "id": 3,
-        "text": "Codewars practice",
-        "day": "Monday 5pm",
-        "reminder": false
+      "id": 3,
+      "text": "Codewars practice",
+      "day": "Monday 5pm",
+      "reminder": false
     }
   ]
 }
