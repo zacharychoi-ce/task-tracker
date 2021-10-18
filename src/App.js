@@ -29,6 +29,15 @@ function App() {
         return data
       }
 
+      // this is for only updating reminder toggle to server
+      const fetchTask = async (id) => {
+        const res = await fetch(`http://localhost:5000/tasks/${id}`)
+        const data = await res.json()
+
+        // console.log(data)
+        return data
+      }
+
     // Add task
     const addTask = async (task) => {
       // // console.log(task)
@@ -64,8 +73,25 @@ function App() {
     }
 
     // Toggle Reminder
-    const toggleReminder = (id) => {
-      setTasks(tasks.map((task) => task.id === id ?  {...task, reminder: !task.reminder} : task))  // spread task, but change reminder to opposite of current task.reminder (false, true etc)
+    const toggleReminder = async (id) => {
+      // getting the task
+      const taskToToggle = await fetchTask(id)
+      // then creating the new task
+      const updatedTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
+
+      const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+        method:'PUT',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(updatedTask)
+      })
+
+      const data = await res.json()
+
+      setTasks(tasks.map((task) => 
+        task.id === id ?  {...task, reminder: data.reminder} : task
+        ))  // (changed due to above server 'PUT'. before change, spread task, but change reminder to opposite of current task.reminder (false, true etc)
     }
 
     return (
