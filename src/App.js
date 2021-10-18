@@ -1,4 +1,4 @@
-import{ useState } from 'react'
+import{ useState, useEffect } from 'react'
 import React from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
@@ -8,8 +8,26 @@ import AddTask from './components/AddTask'
 function App() {
     // for toggling input boxes when clicking Add button
     const [showAddTask, setShowAddTask] = useState(false) // boolean, false by default
-
     const [tasks, setTasks] = useState([])
+    
+
+    useEffect(()=> {     // we can't use async function on line 14
+      const getTasks = async () => {
+        const tasksFromServer = await fetchTasks()
+        setTasks(tasksFromServer)
+      }
+      
+      getTasks()
+    }, [])
+
+    // Fetch Tasks (data)
+    const fetchTasks = async () => {
+        const res = await fetch('http://localhost:5000/tasks')
+        const data = await res.json()
+
+        // console.log(data)
+        return data
+      }
 
     // Add task
     const addTask = (task) => {
